@@ -1,14 +1,17 @@
 package fr.fms.Cinema.Entities;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import org.springframework.data.annotation.Id;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import javax.persistence.*;
 import java.util.List;
 
 
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Cinema {
 
     @Id
@@ -21,5 +24,11 @@ public class Cinema {
     private Cinema cinema;
 
     @OneToMany(mappedBy = "movie")
-    private List<Show> show;
+    private List<ShowTime> showTime;
+
+    public Cinema(Long id, String name, String address) {
+        this.id=id;
+        this.name=name;
+        this.address=address;
+    }
 }

@@ -1,13 +1,53 @@
-package fr.fms.Cinema;
+	package fr.fms.Cinema;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+	import fr.fms.Cinema.Entities.Cinema;
+	import fr.fms.Cinema.Entities.Movie;
+	import fr.fms.Cinema.Entities.ShowTime;
+	import fr.fms.Cinema.dao.CinemaRepository;
+	import fr.fms.Cinema.dao.MovieRepository;
+	import fr.fms.Cinema.dao.ShowRepository;
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.boot.CommandLineRunner;
+	import org.springframework.boot.SpringApplication;
+	import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class CinemaApplication {
+	import java.time.LocalDateTime;
 
-	public static void main(String[] args) {
-		SpringApplication.run(CinemaApplication.class, args);
+	@SpringBootApplication
+	public class CinemaApplication implements CommandLineRunner {
+
+
+		@Autowired
+		CinemaRepository cinemaRepository;
+
+		@Autowired
+		MovieRepository movieRepository;
+
+		@Autowired
+		ShowRepository showRepository;
+
+		public static void main(String[] args)  {
+			SpringApplication.run(CinemaApplication.class, args);
+		}
+
+		@Override
+		public void run(String... args) throws Exception {
+			generateData();
+		}
+
+		private void generateData() {
+			Cinema UGC = cinemaRepository.save(new Cinema(null, "UGC", "Toulouse"));
+			Cinema PATHE = cinemaRepository.save(new Cinema(null, "PATHE", "Toulouse"));
+
+			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", UGC));
+			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", PATHE));
+
+			ShowTime JurassicPark = showRepository.save(new ShowTime(null, Jurassic, LocalDateTime.now(), UGC,10));
+			ShowTime harryP = showRepository.save(new ShowTime(null, harryPotter, LocalDateTime.now(),PATHE,10));
+
+
+
+
+		}
+
 	}
-
-}

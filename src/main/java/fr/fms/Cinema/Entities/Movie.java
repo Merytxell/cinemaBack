@@ -1,10 +1,15 @@
 package fr.fms.Cinema.Entities;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Movie {
 
 

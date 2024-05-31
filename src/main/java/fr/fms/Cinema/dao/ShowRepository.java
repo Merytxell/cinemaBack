@@ -1,7 +1,7 @@
 package fr.fms.Cinema.dao;
 
-import fr.fms.Cinema.Entities.Show;
+import fr.fms.Cinema.Entities.ShowTime;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ShowRepository extends JpaRepository <Show, Long>{
+public interface ShowRepository extends JpaRepository <ShowTime, Long>{
 }
