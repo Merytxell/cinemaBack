@@ -24,15 +24,15 @@ public class ImplBusinessService implements  IBusinessService{
     @Autowired
     ShowRepository showRepository;
 
-    public List<Cinema> getCinema() {
+    public List<Cinema> getAllCinemas() {
         return cinemaRepository.findAll();
     }
 
-    public List<Movie> getMovie() {
+    public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
 
-    public List<ShowTime> getShowTime() {
+    public List<ShowTime> getAllShowTimes() {
         return showRepository.findAll();
     }
 

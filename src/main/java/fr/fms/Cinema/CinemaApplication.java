@@ -32,18 +32,18 @@
 
 		@Override
 		public void run(String... args) throws Exception {
-			generateData();
+			//generateData();
 		}
 
 		private void generateData() {
-			Cinema UGC = cinemaRepository.save(new Cinema(null, "UGC", "Toulouse"));
-			Cinema PATHE = cinemaRepository.save(new Cinema(null, "PATHE", "Toulouse"));
+			Cinema UGC = cinemaRepository.save(new Cinema(null, "UGC", "Toulouse",null));
+			Cinema PATHE = cinemaRepository.save(new Cinema(null, "PATHE", "Toulouse",null));
 
-			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", UGC));
-			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", PATHE));
+			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", null, UGC));
+			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", null, PATHE));
 
-			ShowTime JurassicPark = showRepository.save(new ShowTime(null, Jurassic, LocalDateTime.now(), UGC,10));
-			ShowTime harryP = showRepository.save(new ShowTime(null, harryPotter, LocalDateTime.now(),PATHE,10));
+			ShowTime JurassicPark = showRepository.save(new ShowTime(null,  LocalDateTime.now(),10, Jurassic));
+			ShowTime harryP = showRepository.save(new ShowTime(null, LocalDateTime.now(),10, harryPotter));
 
 
 

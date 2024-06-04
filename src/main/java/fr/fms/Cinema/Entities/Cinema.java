@@ -20,15 +20,8 @@ public class Cinema {
     public String name;
     public String address;
 
-    @ManyToOne
-    private Cinema cinema;
+    @OneToMany(mappedBy = "cinema")
+    @ToString.Exclude
+    private List<Movie> movies;
 
-    @OneToMany(mappedBy = "movie")
-    private List<ShowTime> showTime;
-
-    public Cinema(Long id, String name, String address) {
-        this.id=id;
-        this.name=name;
-        this.address=address;
-    }
 }

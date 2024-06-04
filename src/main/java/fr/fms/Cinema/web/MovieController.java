@@ -6,6 +6,7 @@ import fr.fms.Cinema.Entities.Movie;
 import fr.fms.Cinema.Entities.ShowTime;
 import fr.fms.Cinema.service.ImplBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,23 +19,31 @@ public class MovieController {
     @Autowired
     ImplBusinessService implBusinessService;
 
-    @GetMapping("/cinema")
+
+    @GetMapping("/cinemas")
     public List<Cinema> getCinema(){
-        return implBusinessService.getCinema();
+        List<Cinema> cinemas = implBusinessService.getAllCinemas();
+        System.out.println(cinemas);
+        return cinemas;
     }
 
-    @GetMapping("/movie")
+    @GetMapping("/movies")
     public List<Movie> getMovie(){
-        return implBusinessService.getMovie();
+        List<Movie> movies = implBusinessService.getAllMovies();
+        System.out.println(movies);
+       return movies;
+
     }
 
-    @GetMapping("/ShowTime")
-    public List<ShowTime> getShowTime() {
-        return implBusinessService.getShowTime();
-    };
+    @GetMapping("/showTimes")
+    public ResponseEntity<List<ShowTime>> getShowTime() {
+        List<ShowTime> showTimes = implBusinessService.getAllShowTimes();
+        return ResponseEntity.ok(showTimes);
+    }
 
-    @GetMapping("/movie/cinema/{id}")
-    public List<Movie> trainingsByCategory(@PathVariable("id") Long id){
-        return implBusinessService.getMovieByCinema(id);
+    @GetMapping("/movies/cinemas/{id}")
+    public ResponseEntity<List<Movie>> movieByCinema(@PathVariable("id") Long id){
+        List<Movie> movies = implBusinessService.getMovieByCinema(id);
+        return ResponseEntity.ok(movies);
     }
 }

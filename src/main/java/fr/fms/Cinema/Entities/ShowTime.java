@@ -1,10 +1,12 @@
 package fr.fms.Cinema.Entities;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.ToString;
 
 
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 
 public class ShowTime {
 
@@ -24,16 +27,8 @@ public class ShowTime {
     private int price;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = "showTimes")
     private Movie movie;
 
-    @ManyToOne
-    private Cinema cinema;
-
-    public ShowTime(Long id, Movie movie, LocalDateTime dateTime, Cinema cinema, int price) {
-        this.id=id;
-        this.movie=movie;
-        this.dateTime=dateTime;
-        this.cinema=cinema;
-        this.price=price;
-    }
 }
+
