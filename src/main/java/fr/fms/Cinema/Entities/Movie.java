@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie")
     @ToString.Exclude
-    private List<ShowTime>showTimes;
+    private List<ShowTime>showTimes = new ArrayList<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "movies")

@@ -28,6 +28,7 @@ public class ShowTime {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "showTimes")
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
 }
