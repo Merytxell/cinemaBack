@@ -23,7 +23,7 @@ public class ShowTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime dateTime;
+    private String hour;
     private int price;
 
     @ManyToOne

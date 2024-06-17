@@ -14,4 +14,6 @@ public interface IBusinessService {
     List<Movie> getAllMovies();
 
     List<ShowTime> getAllShowTimes();
+
+    List<Cinema> findByName(String keyword);
 }

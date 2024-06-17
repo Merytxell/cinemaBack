@@ -41,9 +41,21 @@ public class MovieController {
         return ResponseEntity.ok(showTimes);
     }
 
+    @GetMapping("showTimes/movies/{id}")
+    public ResponseEntity<List<ShowTime>> showTimeByMovie(@PathVariable("id") Long id){
+        List<ShowTime> showTimes = implBusinessService.getShowByMovie(id);
+        return ResponseEntity.ok(showTimes);
+    }
+
     @GetMapping("/movies/cinemas/{id}")
     public ResponseEntity<List<Movie>> movieByCinema(@PathVariable("id") Long id){
         List<Movie> movies = implBusinessService.getMovieByCinema(id);
         return ResponseEntity.ok(movies);
+    }
+
+
+    @GetMapping("/cinemas/search/{keyword}")
+    public List<Cinema>searchCinemas (@PathVariable("keyword") String  Keyword){
+        return implBusinessService.findByName(Keyword);
     }
 }

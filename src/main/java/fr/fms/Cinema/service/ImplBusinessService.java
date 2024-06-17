@@ -9,6 +9,7 @@ import fr.fms.Cinema.dao.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -36,6 +37,11 @@ public class ImplBusinessService implements  IBusinessService{
         return showRepository.findAll();
     }
 
+    @Override
+    public List<Cinema> findByName(String keyword) {
+        return cinemaRepository.findByNameContaining(keyword);
+    }
+
     public List<Movie> getMovieByCinema(Long cinemaId) {
         return movieRepository.findByCinemaId(cinemaId);
     }
@@ -43,4 +49,6 @@ public class ImplBusinessService implements  IBusinessService{
     public List<ShowTime> getShowByMovie(Long movieId) {
         return showRepository.findByMovieId(movieId);
     }
+
+
 }

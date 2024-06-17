@@ -42,8 +42,8 @@
 			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", null, UGC));
 			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", null, PATHE));
 
-			ShowTime JurassicPark = showRepository.save(new ShowTime(null,  LocalDateTime.now(),10, Jurassic));
-			ShowTime harryP = showRepository.save(new ShowTime(null, LocalDateTime.now(),10, harryPotter));
+			ShowTime JurassicPark = showRepository.save(new ShowTime(null, "vendredi 7 juin à 16h00",10, Jurassic));
+			ShowTime harryP = showRepository.save(new ShowTime(null, "vendredi 14 juin à 16h00",10, harryPotter));
 
 
 
