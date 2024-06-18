@@ -1,17 +1,16 @@
 	package fr.fms.Cinema;
 
-	import fr.fms.Cinema.Entities.Cinema;
-	import fr.fms.Cinema.Entities.Movie;
-	import fr.fms.Cinema.Entities.ShowTime;
+	import fr.fms.Cinema.Entities.*;
 	import fr.fms.Cinema.dao.CinemaRepository;
 	import fr.fms.Cinema.dao.MovieRepository;
 	import fr.fms.Cinema.dao.ShowRepository;
+	import fr.fms.Cinema.service.AccountService;
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.boot.CommandLineRunner;
 	import org.springframework.boot.SpringApplication;
 	import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-	import java.time.LocalDateTime;
+	import java.util.ArrayList;
 
 	@SpringBootApplication
 	public class CinemaApplication implements CommandLineRunner {
@@ -26,6 +25,9 @@
 		@Autowired
 		ShowRepository showRepository;
 
+		@Autowired
+		AccountService accountService;
+
 		public static void main(String[] args)  {
 			SpringApplication.run(CinemaApplication.class, args);
 		}
@@ -33,6 +35,7 @@
 		@Override
 		public void run(String... args) throws Exception {
 			generateData();
+			generateUsersRoles();
 		}
 
 		private void generateData() {
@@ -54,9 +57,17 @@
 			ShowTime harryPotter2 = showRepository.save(new ShowTime(null, "samedi 22 juin à 16h00",10, harryPotterUgc));
 
 
+		}
 
-
-
+		private void generateUsersRoles(){
+			accountService.saveUser(new AppUser(null,"Josette","1234",new ArrayList<>()));
+			accountService.saveUser(new AppUser(null,"Patoche","1234",new ArrayList<>()));
+			accountService.saveUser(new AppUser(null,"Gege","1234",new ArrayList<>()));
+			accountService.saveRole(new AppRole(null,"ADMIN"));
+			accountService.saveRole(new AppRole(null,"USER"));
+			accountService.addRoleToUser("Josette", "ADMIN");
+			accountService.addRoleToUser("Patoche", "USER");
+			accountService.addRoleToUser("Gege", "USER");
 		}
 
 	}
