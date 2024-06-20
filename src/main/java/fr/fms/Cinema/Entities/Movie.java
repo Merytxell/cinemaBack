@@ -22,6 +22,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String imageName;
 
     @OneToMany(mappedBy = "movie")
     @ToString.Exclude

@@ -42,10 +42,10 @@
 			Cinema UGC = cinemaRepository.save(new Cinema(null, "UGC", "Toulouse",null));
 			Cinema PATHE = cinemaRepository.save(new Cinema(null, "PATHE", "Toulouse",null));
 
-			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", null, UGC));
-			Movie JurassicPathe = movieRepository.save(new Movie(null, "Jurassic park", null, PATHE));
-			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", null, PATHE));
-			Movie harryPotterUgc =	movieRepository.save(new Movie(null, "Harry Potter", null, UGC));
+			Movie Jurassic = movieRepository.save(new Movie(null, "Jurassic park", "jurassic.png", null, UGC ));
+			Movie JurassicPathe = movieRepository.save(new Movie(null, "Jurassic park", "jurassic.png", null, PATHE));
+			Movie harryPotter =	movieRepository.save(new Movie(null, "Harry Potter", "harry.png", null, PATHE));
+			Movie harryPotterUgc =	movieRepository.save(new Movie(null, "Harry Potter", "harry.png", null, UGC));
 
 
 			ShowTime JurassicPark = showRepository.save(new ShowTime(null, "vendredi 21 juin à 16h00",10, Jurassic));

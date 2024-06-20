@@ -9,8 +9,8 @@ import fr.fms.Cinema.dao.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -50,5 +50,14 @@ public class ImplBusinessService implements  IBusinessService{
         return showRepository.findByMovieId(movieId);
     }
 
+    @Override
+    public Optional<Movie> readMovie(Long id){
+        return movieRepository.findById(id);
+    }
+
+    @Override
+    public Movie saveMovie(Movie movie) {
+        return movieRepository.save(movie);
+    }
 
 }
