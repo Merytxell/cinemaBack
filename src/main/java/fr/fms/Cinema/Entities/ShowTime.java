@@ -24,7 +24,7 @@ public class ShowTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String hour;
-    private int price;
+    private double price;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "showTimes")
